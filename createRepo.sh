@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-if ! test -f./firstrun.lck; then
+if ! [ -f firstrun.lck ]; then
   echo "REPO CREATED" >> firstrun.lck
   yum --assumeyes install createrepo
   mkdir repo -p
