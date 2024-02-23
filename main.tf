@@ -20,6 +20,7 @@ resource "github_repository" "repository" {
   auto_init =  true
 
   pages {
+    cname = var.cname
     source {
       branch = "main"
       path   = "/"
@@ -36,7 +37,7 @@ resource "github_repository" "repository" {
 
    provisioner "local-exec" {
     when = destroy
-    command = "rm -r --force repo"
+    command = "rm -r --force repo && rm --force firstrun.lck"
   }
     
 }

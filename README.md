@@ -40,6 +40,8 @@ You'll also need a GitHub account and a personal access token.
     ```hcl
     name = "your-repository-name"
     description = "Description of your repository"
+    /* Optional */
+    cname = "The URL to use a CNAME for your repository"
     ```
 
     Set the `GITHUB_TOKEN` environment variable to your personal access token:
