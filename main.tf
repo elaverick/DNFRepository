@@ -16,17 +16,21 @@ resource "github_repository" "repository" {
   name        = var.name
   description = var.description
 
-  visibility = public
+  visibility = "public"
   auto_init =  true
 
   pages {
     source {
-      branch = "master"
+      branch = "main"
       path   = "/"
     }
   }
 
    provisioner "local-exec" {
-    command = "echo ${self.ssh_clone_url} >> ssh.txt"
+    command = "./createRepo.sh"
+
+    environment = {
+      REPO_URL = self.ssh_clone_url
+    }
   }
 }
