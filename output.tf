@@ -4,5 +4,5 @@ output "ssh_clone_url" {
 }
 
 output "next_steps" {
-    value = var.cname != null && !fileexists("firstrun.lck") ? "Please re-run terraform apply to set a CNAME for your repository":null
+    value = var.cname != null && !fileexists("firstrun.lck") ? "Please re-run terraform apply to set a CNAME for your repository": !fileexists("firstrun.lck") ? null : "Done"
 }
