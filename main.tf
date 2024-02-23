@@ -9,7 +9,7 @@ terraform {
 
 # Configure the GitHub Provider
 provider "github" {
-    #Set GITHUB Token Environment variable
+    #Set GITHUB_TOKEN Environment variable
 }
 
 resource "github_repository" "repository" {
@@ -32,5 +32,11 @@ resource "github_repository" "repository" {
     environment = {
       REPO_URL = self.ssh_clone_url
     }
+   }
+
+   provisioner "local-exec" {
+    when = destroy
+    command = "rm -r --force repo"
   }
+    
 }
